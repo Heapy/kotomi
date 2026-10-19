@@ -1,0 +1,25 @@
+name: Build
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: Heapy/setup-ktc@e0a603c477110083db0b44f302deb188d4991ea0 # v1.1.0
+      - name: Restore locked build plugins
+        run: |
+          ./ktc-plugins sync
+          ./ktc-plugins verify
+      - uses: Heapy/ktc-check@4575484d8e2596bde65d671991e72fadc42ad47b # v1.1.0
+        with:
+          platforms: jvm
+      - name: Verify Maven publication
+        run: ./publish-local

@@ -1,0 +1,15 @@
+product: jvm/lib
+
+apply:
+  - //templates/common.module-template.yaml
+  - //templates/publishing.module-template.yaml
+
+description: Test time source for applications using kotomi-time
+
+dependencies:
+  - //kotomi-time: exported
+
+settings:
+  publishing:
+    pom:
+      name: Kotomi Time Test Fixtures

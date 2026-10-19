@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+cd "$(dirname "$0")"
+
+# Test-only modules and build plugins have no Maven publication.
+set --
+for module in kotomi-*; do
+    if [ -f "$module/module.yaml" ] && grep -q '//templates/publishing.module-template.yaml' "$module/module.yaml"; then
+        set -- "$@" -m "$module"
+    fi
+done
+
+exec ./kotlin publish mavenLocal --transitive "$@"

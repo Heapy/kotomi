@@ -1,0 +1,13 @@
+tasks:
+  prepare:
+    action: !io.heapy.kotomi.build.prepareCompiler
+      compilerJar:
+        from: //kotomi-runtime-compiler
+        kind: jar
+      configuredCompilerJar: ${project.rootDir}/build/tasks/_kotomi-runtime-compiler_jarJvm/kotomi-runtime-compiler-jvm.jar
+      sourcesDirectory: ${taskOutputDir}/sources
+
+generated:
+  sources:
+    - language: kotlin
+      directory: ${tasks.prepare.action.sourcesDirectory}

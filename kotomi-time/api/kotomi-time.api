@@ -1,0 +1,64 @@
+public final class io/heapy/kotomi/time/IndexedTimeZone {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lio/heapy/kotomi/time/IndexedTimeZone;
+	public static synthetic fun copy$default (Lio/heapy/kotomi/time/IndexedTimeZone;Ljava/lang/String;ILjava/lang/Object;)Lio/heapy/kotomi/time/IndexedTimeZone;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/time/IndexedTimeZoneKt {
+	public static final fun indexedTimeZone ()Lio/heapy/kotomi/time/IndexedTimeZone;
+	public static final fun zoneTimeCodec ()Lio/heapy/kotomi/time/TimeCodec;
+}
+
+public final class io/heapy/kotomi/time/LegacyTimeProviders {
+	public static final field INSTANCE Lio/heapy/kotomi/time/LegacyTimeProviders;
+	public final fun providersFromTimeZone ()Lio/heapy/kotomi/time/ProvidersFromTimeZone;
+}
+
+public final class io/heapy/kotomi/time/ProvidersFromTimeZone {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lio/heapy/kotomi/time/ProvidersFromTimeZone;
+	public static synthetic fun copy$default (Lio/heapy/kotomi/time/ProvidersFromTimeZone;Ljava/lang/String;ILjava/lang/Object;)Lio/heapy/kotomi/time/ProvidersFromTimeZone;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getId ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class io/heapy/kotomi/time/TimeCodec {
+	public abstract fun getName ()Ljava/lang/String;
+}
+
+public abstract interface class io/heapy/kotomi/time/TimeSource {
+	public abstract fun getClock ()Ljava/time/Clock;
+	public abstract fun instant ()Ljava/time/Instant;
+	public abstract fun localDate ()Ljava/time/LocalDate;
+	public abstract fun localDateTime ()Ljava/time/LocalDateTime;
+	public abstract fun localTime ()Ljava/time/LocalTime;
+	public abstract fun offsetDateTime ()Ljava/time/OffsetDateTime;
+	public abstract fun offsetTime ()Ljava/time/OffsetTime;
+	public abstract fun zonedDateTime ()Ljava/time/ZonedDateTime;
+}
+
+public final class io/heapy/kotomi/time/TimeSourceKt {
+	public static final fun TimeSource (Ljava/time/Clock;)Lio/heapy/kotomi/time/TimeSource;
+}
+
+public abstract interface class io/heapy/kotomi/time/TimeSourceModule {
+	public fun timeSource (Lio/heapy/kotomi/runtime/KotomiContext;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/heapy/kotomi/time/TimeSourceModule$Bindings {
+	public static final field INSTANCE Lio/heapy/kotomi/time/TimeSourceModule$Bindings;
+	public final fun getTimeSource ()Lio/heapy/kotomi/runtime/Binding;
+}
+
+public final class io/heapy/kotomi/time/TimeSourceModule$DefaultImpls {
+	public static fun timeSource (Lio/heapy/kotomi/time/TimeSourceModule;Lio/heapy/kotomi/runtime/KotomiContext;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+

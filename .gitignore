@@ -1,0 +1,21 @@
+# Intellij Idea
+/.idea/
+out/
+*.iml
+*.iws
+*.ipr
+
+# Build output
+build/
+
+# Kotlin
+/.kotlin/
+/buildSrc/.kotlin/
+
+# System
+.DS_Store
+
+# Publish
+publish.sh
+# ktc-plugins managed entries
+/.ktc-plugins/

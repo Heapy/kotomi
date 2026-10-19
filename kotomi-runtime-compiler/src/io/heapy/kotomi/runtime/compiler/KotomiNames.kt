@@ -1,0 +1,12 @@
+package io.heapy.kotomi.runtime.compiler
+
+import org.jetbrains.kotlin.name.ClassId
+import org.jetbrains.kotlin.name.FqName
+
+internal object KotomiNames {
+    val runtimePackage = FqName("io.heapy.kotomi.runtime")
+    val module = ClassId.topLevel(runtimePackage.child(org.jetbrains.kotlin.name.Name.identifier("Module")))
+    val context = ClassId.topLevel(runtimePackage.child(org.jetbrains.kotlin.name.Name.identifier("KotomiContext")))
+    val startup = ClassId.topLevel(runtimePackage.child(org.jetbrains.kotlin.name.Name.identifier("Startup")))
+    val shutdown = ClassId.topLevel(runtimePackage.child(org.jetbrains.kotlin.name.Name.identifier("Shutdown")))
+}

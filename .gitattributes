@@ -1,0 +1,4 @@
+*.kt            text diff=kotlin
+kotlin          text eol=lf
+ktc-plugins     text eol=lf
+*.bat           text eol=crlf

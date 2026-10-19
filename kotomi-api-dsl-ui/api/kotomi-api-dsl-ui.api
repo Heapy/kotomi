@@ -1,0 +1,8 @@
+public final class io/heapy/kotomi/api/dsl/ui/HttpFileGeneratorKt {
+	public static final fun generateHttpFile (Lio/heapy/kotomi/api/dsl/OpenAPI;)Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/api/dsl/ui/OpenApiDocRendererKt {
+	public static final fun renderOpenApiDoc (Lio/heapy/kotomi/api/dsl/OpenAPI;)Ljava/lang/String;
+}
+

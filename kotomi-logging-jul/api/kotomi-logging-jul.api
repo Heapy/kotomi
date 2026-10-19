@@ -1,0 +1,19 @@
+public final class io/heapy/kotomi/logging/jul/KotomiJulHandler : java/util/logging/Handler {
+	public fun <init> (Lio/heapy/kotomi/logging/LoggingContext;)V
+	public fun close ()V
+	public fun flush ()V
+	public fun publish (Ljava/util/logging/LogRecord;)V
+}
+
+public final class io/heapy/kotomi/logging/jul/KotomiJulHandlerModule {
+	public fun <init> ()V
+	public final fun julHandler (Lio/heapy/kotomi/runtime/KotomiContext;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun loggingContext (Lio/heapy/kotomi/runtime/KotomiContext;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class io/heapy/kotomi/logging/jul/KotomiJulHandlerModule$Bindings {
+	public static final field INSTANCE Lio/heapy/kotomi/logging/jul/KotomiJulHandlerModule$Bindings;
+	public final fun getJulHandler ()Lio/heapy/kotomi/runtime/Binding;
+	public final fun getLoggingContext ()Lio/heapy/kotomi/runtime/Binding;
+}
+

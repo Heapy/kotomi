@@ -1,0 +1,8 @@
+product: jvm/lib
+
+apply:
+  - //templates/jvm.module-template.yaml
+
+# Test-only third-party wrapper: annotation and helper on the application classpath.
+dependencies:
+  - //kotomi-runtime-wrappers: exported

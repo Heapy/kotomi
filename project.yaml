@@ -1,0 +1,26 @@
+modules:
+  - kotomi-api-dsl
+  - kotomi-api-dsl-ui
+  - kotomi-config
+  - kotomi-config-common
+  - kotomi-config-dotenv
+  - kotomi-logging
+  - kotomi-logging-api
+  - kotomi-logging-jul
+  - kotomi-logging-slf4j
+  - kotomi-runtime
+  - kotomi-runtime-compiler
+  - kotomi-runtime-compiler-test
+  - kotomi-runtime-test
+  - kotomi-runtime-test-wrapper
+  - kotomi-runtime-wrappers
+  - kotomi-time
+  - kotomi-time-test-fixtures
+  - kotomi-to-be-injected
+  - kotomi-utils-slf4j
+  - plugins/bcv
+  - plugins/runtime-compiler
+
+plugins:
+  - //plugins/bcv
+  - //plugins/runtime-compiler

@@ -1,0 +1,20 @@
+public final class io/heapy/kotomi/config/common/DefaultEnvironment : io/heapy/kotomi/config/common/Environment {
+	public fun <init> (Ljava/util/Map;)V
+	public final fun component1 ()Ljava/util/Map;
+	public final fun copy (Ljava/util/Map;)Lio/heapy/kotomi/config/common/DefaultEnvironment;
+	public static synthetic fun copy$default (Lio/heapy/kotomi/config/common/DefaultEnvironment;Ljava/util/Map;ILjava/lang/Object;)Lio/heapy/kotomi/config/common/DefaultEnvironment;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getProperties ()Ljava/util/Map;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/config/common/EmptyEnvironment : io/heapy/kotomi/config/common/Environment {
+	public static final field INSTANCE Lio/heapy/kotomi/config/common/EmptyEnvironment;
+	public fun getProperties ()Ljava/util/Map;
+}
+
+public abstract interface class io/heapy/kotomi/config/common/Environment {
+	public abstract fun getProperties ()Ljava/util/Map;
+}
+

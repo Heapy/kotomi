@@ -1,0 +1,243 @@
+# kotomi-to-be-injected
+
+> Minimal Kotlin/JVM dependency injection library based on property delegates
+
+## Overview
+
+This library provides a simple, compile-time safe dependency injection mechanism using Kotlin's `lazy` delegate pattern. It allows defining module classes with bean properties that are lazily initialized and can be mocked for testing.
+
+Requires Java 21 or newer.
+
+## Installation
+
+```kotlin
+dependencies {
+    implementation("io.heapy.kotomi:kotomi-to-be-injected:1.2.0")
+}
+```
+
+Maven uses the same artifact: `io.heapy.kotomi:kotomi-to-be-injected:1.2.0`.
+
+## Imports
+
+```kotlin
+import io.heapy.kotomi.di.delegate.bean
+import io.heapy.kotomi.di.delegate.MutableBean
+
+import io.heapy.kotomi.di.delegate.buildModule
+import io.heapy.kotomi.di.delegate.buildModules
+import io.heapy.kotomi.di.delegate.ModuleRegistry
+```
+
+## Key Components
+
+- `bean` - Property delegate function to declare injectable beans
+- `MutableBean<V>` - Thread-safe lazy container that supports mocking and value override before initialization
+- `buildModule<T>()` - Reflectively builds `T` and every module its constructor needs
+- `buildModules<T>()` - Returns a `ModuleRegistry` rooted at `T`
+- `ModuleRegistry` - Provides type-based access to any module in the tree
+
+## Usage Pattern
+
+### Basic Module (no dependencies)
+
+```kotlin
+class ConfigurationModule {
+    val config by bean {
+        AppConfig(
+            host = "localhost",
+            port = 8080
+        )
+    }
+}
+```
+
+### Module with Dependencies
+
+Module dependencies are declared as **constructor parameters**. Keep them `private` if only used internally.
+
+```kotlin
+class UtilsModule(
+    private val configurationModule: ConfigurationModule,
+) {
+    val httpClient by bean<HttpClient> {
+        DefaultHttpClient(
+            timeout = configurationModule.config.value.timeout
+        )
+    }
+
+    val cache by bean<Cache> {
+        FileCache(
+            enabled = configurationModule.config.value.cacheEnabled
+        )
+    }
+}
+```
+
+### Composing Modules
+
+Higher-level modules depend on lower-level modules through constructor parameters:
+
+```kotlin
+class ApplicationModule(
+    private val utilsModule: UtilsModule,
+    private val serviceModule: ServiceModule,
+) {
+    val app by bean {
+        Application(
+            httpClient = utilsModule.httpClient.value,
+            userService = serviceModule.userService.value
+        )
+    }
+}
+```
+
+### Wiring Modules
+
+Modules are ordinary classes, so code can construct them directly. The
+compiler checks the wiring: a missing dependency is a compile error.
+
+```kotlin
+fun main() {
+    val configurationModule = ConfigurationModule()
+    val utilsModule = UtilsModule(configurationModule)
+    val serviceModule = ServiceModule(utilsModule, daoModule)
+    val applicationModule = ApplicationModule(utilsModule, serviceModule)
+
+    applicationModule.app.value.start()
+}
+```
+
+Hold the modules in a class with `lazy` properties when construction order
+should follow first use:
+
+```kotlin
+class Application {
+    val configuration by lazy { ConfigurationModule() }
+    val utils by lazy { UtilsModule(configuration) }
+    val service by lazy { ServiceModule(utils, dao) }
+}
+```
+
+### JVM Reflection Shortcut
+
+The library can inspect constructors using JVM reflection:
+
+```kotlin
+val app = buildModule<ApplicationModule>()
+```
+
+Every constructor parameter must itself be a module. Module dependencies must
+not contain cycles.
+
+### Accessing Any Module via Type Lookup
+
+Use `buildModules<T>()` to get a `ModuleRegistry` that provides type-based access to any module in the tree:
+
+```kotlin
+val modules = buildModules<ApplicationModule>()
+
+// Access any module by type
+val app = modules<ApplicationModule>()
+val utils = modules<UtilsModule>()
+val config = modules<ConfigurationModule>()
+```
+
+This is useful when you need to access deeply nested modules without navigating through constructor parameters.
+
+## Bean Type Inference
+
+Explicit type can be specified when interface differs from implementation:
+
+```kotlin
+val httpClient by bean<HttpClient> {  // Interface type
+    DefaultHttpClient()                // Implementation
+}
+```
+
+Or let it be inferred when types match:
+
+```kotlin
+val config by bean {
+    AppConfig()  // Type inferred as AppConfig
+}
+```
+
+## Accessing Bean Values
+
+Bean values are accessed via `.value` property:
+
+```kotlin
+class ServiceModule(
+    private val utilsModule: UtilsModule,
+) {
+    val userService by bean {
+        UserService(
+            httpClient = utilsModule.httpClient.value,  // Access via .value
+            cache = utilsModule.cache.value
+        )
+    }
+}
+```
+
+## Testing
+
+Beans can be mocked before initialization:
+
+```kotlin
+val utilsModule = UtilsModule(ConfigurationModule())
+utilsModule.httpClient.mock {
+    mockk { every { get(any()) } returns Response(200, "OK") }
+}
+```
+
+Alternatively, type beans as interfaces and pass a fake to `setValue`, or
+create the fake in `mock`:
+
+```kotlin
+utilsModule.httpClient.setValue(
+    FakeHttpClient(Response(200, "OK")),
+)
+```
+
+### Mocking Beans in Nested Modules
+
+Use `buildModules<T>()` to access and mock beans in any module of the tree, even when constructor parameters are private:
+
+```kotlin
+@Test
+fun `test with mocked http client`() {
+    val modules = buildModules<ApplicationModule>()
+
+    // Access nested module directly by type (no need for public constructor params)
+    val utilsModule = modules<UtilsModule>()
+    utilsModule.httpClient.mock {
+        mockk { every { get(any()) } returns Response(200, "OK") }
+    }
+
+    // Mock configuration in deeply nested module
+    val configModule = modules<ConfigurationModule>()
+    configModule.config.setValue(AppConfig(host = "test", port = 9999))
+
+    // Now test the application with mocked dependencies
+    val app = modules<ApplicationModule>()
+    val result = app.app.value.doSomething()
+
+    assertEquals("expected", result)
+}
+```
+
+This approach is useful when:
+- Module constructor parameters are `private`
+- You need to mock beans several levels deep in the module tree
+- You want to avoid exposing internal modules just for testing
+
+## Design Notes
+
+- Uses volatile fields and double-checked locking for thread-safe lazy initialization
+- Supports reflective module construction and SLF4J logging
+- Module dependencies are declared via constructor parameters (not as beans)
+- Bean values accessed via `.value` property
+- Mocking must happen before first `.value` access
+- Constructor parameters should be `private` unless external access is needed
+- Implementation classes should be `internal` to allow direct instantiation in modules

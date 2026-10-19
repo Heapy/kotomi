@@ -1,0 +1,290 @@
+public abstract interface class io/heapy/kotomi/logging/Encoder {
+	public abstract fun encode (Lio/heapy/kotomi/logging/LogEvent;)Ljava/lang/String;
+}
+
+public abstract class io/heapy/kotomi/logging/FormatElement {
+}
+
+public final class io/heapy/kotomi/logging/FormatElement$AllMdc : io/heapy/kotomi/logging/FormatElement {
+	public static final field INSTANCE Lio/heapy/kotomi/logging/FormatElement$AllMdc;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/logging/FormatElement$Level : io/heapy/kotomi/logging/FormatElement {
+	public static final field INSTANCE Lio/heapy/kotomi/logging/FormatElement$Level;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/logging/FormatElement$Literal : io/heapy/kotomi/logging/FormatElement {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lio/heapy/kotomi/logging/FormatElement$Literal;
+	public static synthetic fun copy$default (Lio/heapy/kotomi/logging/FormatElement$Literal;Ljava/lang/String;ILjava/lang/Object;)Lio/heapy/kotomi/logging/FormatElement$Literal;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getText ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/logging/FormatElement$LoggerName : io/heapy/kotomi/logging/FormatElement {
+	public static final field INSTANCE Lio/heapy/kotomi/logging/FormatElement$LoggerName;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/logging/FormatElement$LoggerNameShort : io/heapy/kotomi/logging/FormatElement {
+	public fun <init> ()V
+	public fun <init> (I)V
+	public synthetic fun <init> (IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun copy (I)Lio/heapy/kotomi/logging/FormatElement$LoggerNameShort;
+	public static synthetic fun copy$default (Lio/heapy/kotomi/logging/FormatElement$LoggerNameShort;IILjava/lang/Object;)Lio/heapy/kotomi/logging/FormatElement$LoggerNameShort;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSegments ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/logging/FormatElement$MdcValue : io/heapy/kotomi/logging/FormatElement {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lio/heapy/kotomi/logging/FormatElement$MdcValue;
+	public static synthetic fun copy$default (Lio/heapy/kotomi/logging/FormatElement$MdcValue;Ljava/lang/String;ILjava/lang/Object;)Lio/heapy/kotomi/logging/FormatElement$MdcValue;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getKey ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/logging/FormatElement$Message : io/heapy/kotomi/logging/FormatElement {
+	public static final field INSTANCE Lio/heapy/kotomi/logging/FormatElement$Message;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/logging/FormatElement$Newline : io/heapy/kotomi/logging/FormatElement {
+	public static final field INSTANCE Lio/heapy/kotomi/logging/FormatElement$Newline;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/logging/FormatElement$ThreadName : io/heapy/kotomi/logging/FormatElement {
+	public static final field INSTANCE Lio/heapy/kotomi/logging/FormatElement$ThreadName;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/logging/FormatElement$ThrowableTrace : io/heapy/kotomi/logging/FormatElement {
+	public static final field INSTANCE Lio/heapy/kotomi/logging/FormatElement$ThrowableTrace;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/logging/FormatElement$Timestamp : io/heapy/kotomi/logging/FormatElement {
+	public static final field INSTANCE Lio/heapy/kotomi/logging/FormatElement$Timestamp;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public class io/heapy/kotomi/logging/JvmLogger {
+	public fun <init> ()V
+	protected final fun getLog-d1bUFWU ()Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/logging/Level : java/lang/Enum {
+	public static final field DEBUG Lio/heapy/kotomi/logging/Level;
+	public static final field ERROR Lio/heapy/kotomi/logging/Level;
+	public static final field INFO Lio/heapy/kotomi/logging/Level;
+	public static final field OFF Lio/heapy/kotomi/logging/Level;
+	public static final field TRACE Lio/heapy/kotomi/logging/Level;
+	public static final field WARN Lio/heapy/kotomi/logging/Level;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lio/heapy/kotomi/logging/Level;
+	public static fun values ()[Lio/heapy/kotomi/logging/Level;
+}
+
+public final class io/heapy/kotomi/logging/LogEvent {
+	public fun <init> (Lio/heapy/kotomi/logging/Level;Ljava/lang/String;Ljava/lang/String;Lio/heapy/kotomi/logging/ThrowableProxy;Lkotlin/time/Instant;Lio/heapy/kotomi/logging/Mdc;)V
+	public final fun getLevel ()Lio/heapy/kotomi/logging/Level;
+	public final fun getLoggerName ()Ljava/lang/String;
+	public final fun getMdc ()Lio/heapy/kotomi/logging/Mdc;
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getThreadName ()Ljava/lang/String;
+	public final fun getThrowable ()Lio/heapy/kotomi/logging/ThrowableProxy;
+	public final fun getTimestamp ()Lkotlin/time/Instant;
+	public final fun prepareForDeferredProcessing ()V
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class io/heapy/kotomi/logging/LogHandler {
+	public static final field Companion Lio/heapy/kotomi/logging/LogHandler$Companion;
+	public abstract fun handle (Lio/heapy/kotomi/logging/LogEvent;)V
+	public fun isEnabled (Lio/heapy/kotomi/logging/Level;Ljava/lang/String;)Z
+}
+
+public final class io/heapy/kotomi/logging/LogHandler$Companion {
+	public final fun composite (Ljava/util/List;)Lio/heapy/kotomi/logging/LogHandler;
+	public final fun composite ([Lio/heapy/kotomi/logging/LogHandler;)Lio/heapy/kotomi/logging/LogHandler;
+	public final fun noop ()Lio/heapy/kotomi/logging/LogHandler;
+}
+
+public final class io/heapy/kotomi/logging/LogHandler$DefaultImpls {
+	public static fun isEnabled (Lio/heapy/kotomi/logging/LogHandler;Lio/heapy/kotomi/logging/Level;Ljava/lang/String;)Z
+}
+
+public final class io/heapy/kotomi/logging/LogHandlerKt {
+	public static final fun andThen (Lio/heapy/kotomi/logging/LogHandlerWrapper;Lio/heapy/kotomi/logging/LogHandlerWrapper;)Lio/heapy/kotomi/logging/LogHandlerWrapper;
+	public static final fun wrappedBy (Lio/heapy/kotomi/logging/LogHandler;Ljava/util/List;)Lio/heapy/kotomi/logging/LogHandler;
+	public static final fun wrappedBy (Lio/heapy/kotomi/logging/LogHandler;[Lio/heapy/kotomi/logging/LogHandlerWrapper;)Lio/heapy/kotomi/logging/LogHandler;
+}
+
+public abstract interface class io/heapy/kotomi/logging/LogHandlerWrapper {
+	public static final field Companion Lio/heapy/kotomi/logging/LogHandlerWrapper$Companion;
+	public abstract fun wrap (Lio/heapy/kotomi/logging/LogHandler;)Lio/heapy/kotomi/logging/LogHandler;
+}
+
+public final class io/heapy/kotomi/logging/LogHandlerWrapper$Companion {
+	public final fun identity ()Lio/heapy/kotomi/logging/LogHandlerWrapper;
+}
+
+public final class io/heapy/kotomi/logging/Logger {
+	public static final synthetic fun box-impl (Ljava/lang/String;)Lio/heapy/kotomi/logging/Logger;
+	public static fun constructor-impl (Ljava/lang/String;)Ljava/lang/String;
+	public static final fun debug-impl (Ljava/lang/String;Lio/heapy/kotomi/logging/LoggingContext;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun debug-impl$default (Ljava/lang/String;Lio/heapy/kotomi/logging/LoggingContext;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public static fun equals-impl (Ljava/lang/String;Ljava/lang/Object;)Z
+	public static final fun equals-impl0 (Ljava/lang/String;Ljava/lang/String;)Z
+	public static final fun error-impl (Ljava/lang/String;Lio/heapy/kotomi/logging/LoggingContext;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun error-impl$default (Ljava/lang/String;Lio/heapy/kotomi/logging/LoggingContext;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public final fun getName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public static fun hashCode-impl (Ljava/lang/String;)I
+	public static final fun info-impl (Ljava/lang/String;Lio/heapy/kotomi/logging/LoggingContext;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun info-impl$default (Ljava/lang/String;Lio/heapy/kotomi/logging/LoggingContext;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public static final fun isEnabled-impl (Ljava/lang/String;Lio/heapy/kotomi/logging/LoggingContext;Lio/heapy/kotomi/logging/Level;)Z
+	public static final fun log-impl (Ljava/lang/String;Lio/heapy/kotomi/logging/LoggingContext;Lio/heapy/kotomi/logging/Level;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function0;)V
+	public fun toString ()Ljava/lang/String;
+	public static fun toString-impl (Ljava/lang/String;)Ljava/lang/String;
+	public static final fun trace-impl (Ljava/lang/String;Lio/heapy/kotomi/logging/LoggingContext;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun trace-impl$default (Ljava/lang/String;Lio/heapy/kotomi/logging/LoggingContext;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+	public final synthetic fun unbox-impl ()Ljava/lang/String;
+	public static final fun warn-impl (Ljava/lang/String;Lio/heapy/kotomi/logging/LoggingContext;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function0;)V
+	public static synthetic fun warn-impl$default (Ljava/lang/String;Lio/heapy/kotomi/logging/LoggingContext;Ljava/lang/Throwable;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)V
+}
+
+public final class io/heapy/kotomi/logging/LoggerKt {
+	public static final fun getLogger (Ljava/lang/String;)Ljava/lang/String;
+	public static final fun logger (Ljava/lang/Object;)Ljava/lang/String;
+	public static final fun logger (Ljava/lang/String;)Ljava/lang/String;
+	public static final fun logger (Lkotlin/reflect/KClass;)Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/logging/LoggingContext {
+	public fun <init> (Lio/heapy/kotomi/logging/LogHandler;Lio/heapy/kotomi/logging/Mdc;Lkotlin/jvm/functions/Function0;)V
+	public synthetic fun <init> (Lio/heapy/kotomi/logging/LogHandler;Lio/heapy/kotomi/logging/Mdc;Lkotlin/jvm/functions/Function0;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun dispatch (Lio/heapy/kotomi/logging/LogEvent;)V
+	public final fun getHandler ()Lio/heapy/kotomi/logging/LogHandler;
+	public final fun getMdc ()Lio/heapy/kotomi/logging/Mdc;
+	public final fun getNow ()Lkotlin/jvm/functions/Function0;
+	public fun toString ()Ljava/lang/String;
+	public final fun withMdc (Lio/heapy/kotomi/logging/Mdc$Key;Ljava/lang/Object;)Lio/heapy/kotomi/logging/LoggingContext;
+	public final fun withMdc (Lio/heapy/kotomi/logging/Mdc;)Lio/heapy/kotomi/logging/LoggingContext;
+	public final fun withMdc (Lkotlin/jvm/functions/Function1;)Lio/heapy/kotomi/logging/LoggingContext;
+}
+
+public final class io/heapy/kotomi/logging/LoggingContextKt {
+	public static final fun getEmptyLoggingContext ()Lio/heapy/kotomi/logging/LoggingContext;
+	public static final fun getLoggingContext (Lio/heapy/kotomi/logging/LoggingContext;)Lio/heapy/kotomi/logging/LoggingContext;
+	public static final fun withEmptyLoggingContext (Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun withMdc (Lio/heapy/kotomi/logging/LoggingContext;Lio/heapy/kotomi/logging/Mdc$Key;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun withMdc (Lio/heapy/kotomi/logging/LoggingContext;Lio/heapy/kotomi/logging/Mdc;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun withMdc (Lio/heapy/kotomi/logging/LoggingContext;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+}
+
+public final class io/heapy/kotomi/logging/MapMdc : io/heapy/kotomi/logging/Mdc {
+	public fun <init> (Ljava/util/Map;)V
+	public fun entries ()Ljava/util/Map;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun get (Lio/heapy/kotomi/logging/Mdc$Key;)Ljava/lang/Object;
+	public final fun getMap ()Ljava/util/Map;
+	public fun getSize ()I
+	public fun hashCode ()I
+	public fun isEmpty ()Z
+	public fun minus (Lio/heapy/kotomi/logging/Mdc$Key;)Lio/heapy/kotomi/logging/Mdc;
+	public fun plus (Lio/heapy/kotomi/logging/Mdc;)Lio/heapy/kotomi/logging/Mdc;
+	public fun toString ()Ljava/lang/String;
+	public fun with (Lio/heapy/kotomi/logging/Mdc$Key;Ljava/lang/Object;)Lio/heapy/kotomi/logging/Mdc;
+}
+
+public abstract interface class io/heapy/kotomi/logging/Mdc {
+	public static final field Companion Lio/heapy/kotomi/logging/Mdc$Companion;
+	public abstract fun entries ()Ljava/util/Map;
+	public abstract fun get (Lio/heapy/kotomi/logging/Mdc$Key;)Ljava/lang/Object;
+	public abstract fun getSize ()I
+	public fun isEmpty ()Z
+	public abstract fun minus (Lio/heapy/kotomi/logging/Mdc$Key;)Lio/heapy/kotomi/logging/Mdc;
+	public abstract fun plus (Lio/heapy/kotomi/logging/Mdc;)Lio/heapy/kotomi/logging/Mdc;
+	public abstract fun with (Lio/heapy/kotomi/logging/Mdc$Key;Ljava/lang/Object;)Lio/heapy/kotomi/logging/Mdc;
+}
+
+public final class io/heapy/kotomi/logging/Mdc$Companion {
+	public final fun getEmpty ()Lio/heapy/kotomi/logging/Mdc;
+	public final fun of (Lio/heapy/kotomi/logging/Mdc$Key;Ljava/lang/Object;)Lio/heapy/kotomi/logging/Mdc;
+	public final fun of ([Lkotlin/Pair;)Lio/heapy/kotomi/logging/Mdc;
+}
+
+public final class io/heapy/kotomi/logging/Mdc$DefaultImpls {
+	public static fun isEmpty (Lio/heapy/kotomi/logging/Mdc;)Z
+}
+
+public abstract class io/heapy/kotomi/logging/Mdc$Key {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun getName ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/logging/MdcBuilder {
+	public fun <init> ()V
+	public final fun build ()Lio/heapy/kotomi/logging/Mdc;
+	public final fun invoke (Lio/heapy/kotomi/logging/Mdc$Key;Ljava/lang/Object;)V
+	public final fun to (Lio/heapy/kotomi/logging/Mdc$Key;Ljava/lang/Object;)V
+}
+
+public final class io/heapy/kotomi/logging/MdcKt {
+	public static final fun buildMdc (Lkotlin/jvm/functions/Function1;)Lio/heapy/kotomi/logging/Mdc;
+}
+
+public final class io/heapy/kotomi/logging/StackTraceElementProxy {
+	public fun <init> (Ljava/lang/StackTraceElement;)V
+	public final fun getStackTraceElement ()Ljava/lang/StackTraceElement;
+	public final fun getString ()Ljava/lang/String;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/logging/ThrowableProxy {
+	public static final field Companion Lio/heapy/kotomi/logging/ThrowableProxy$Companion;
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;[Lio/heapy/kotomi/logging/StackTraceElementProxy;Lio/heapy/kotomi/logging/ThrowableProxy;[Lio/heapy/kotomi/logging/ThrowableProxy;I)V
+	public final fun getCause ()Lio/heapy/kotomi/logging/ThrowableProxy;
+	public final fun getClassName ()Ljava/lang/String;
+	public final fun getCommonFramesCount ()I
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getStackTrace ()[Lio/heapy/kotomi/logging/StackTraceElementProxy;
+	public final fun getSuppressed ()[Lio/heapy/kotomi/logging/ThrowableProxy;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class io/heapy/kotomi/logging/ThrowableProxy$Companion {
+	public final fun create (Ljava/lang/Throwable;)Lio/heapy/kotomi/logging/ThrowableProxy;
+}
+
